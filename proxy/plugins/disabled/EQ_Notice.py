@@ -306,7 +306,7 @@ class RequestEQNoitce(Command):
 
     def call_from_console(self):
         try:
-            argIn = self.args[8:].encode('utf-8')
+            argIn = self.args[8:]
             shipArg = int(argIn)
         except Exception as e:
             return("[EQ Notice] Please enter the ship number to check.")
