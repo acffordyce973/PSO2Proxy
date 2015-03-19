@@ -305,7 +305,12 @@ class RequestEQNoitce(Command):
         client.send_crypto_packet(SMPacket)
 
     def call_from_console(self):
-        return
+        argIn = self.args[2:].encode('utf-8')
+        shipArg = int(argIn)
+        if 1 <= shipArg <= 10:
+            print("[EQ_Notice] Incoming EQ Report from PSO2es: %s" % (msg_eq[shipArg]))
+        else:
+            print("[EQ_Notice] Please enter a valid ship number.")
 
 
 @plugins.CommandHook("eqnotice", "Toggles display of EQ notices from PSO2es sources")
