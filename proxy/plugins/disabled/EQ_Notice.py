@@ -309,15 +309,15 @@ class RequestEQNoitce(Command):
             argIn = self.args[8:].encode('utf-8')
             shipArg = int(argIn)
         except Exception as e:
-            #print("[EQ Notice] Please enter the ship number to check.")
             return("[EQ Notice] Please enter the ship number to check.")
         if 1 <= shipArg <= 10:
-            if data_eq[shipArg - 1] and not check_if_EQ_old(shipArg - 1):
-                print("[EQ_Notice] Incoming EQ Report from PSO2es: %s" % (msg_eq[shipArg - 1]))
+            shipArg = shipArg - 1
+            if data_eq[shipArg] and not check_if_EQ_old(shipArg):
+                return("[EQ_Notice] Incoming EQ Report from PSO2es: %s" % (msg_eq[shipArg]))
             else:
-                print("[EQ_Notice] No new EQ Report from PSO2es")
+                return("[EQ_Notice] No new EQ Report from PSO2es for Ship " % (shipArg + 1))
         else:
-            print("[EQ_Notice] Please enter a valid ship number.")
+            return("[EQ_Notice] Please enter a valid ship number.")
 
 
 @plugins.CommandHook("eqnotice", "Toggles display of EQ notices from PSO2es sources")
