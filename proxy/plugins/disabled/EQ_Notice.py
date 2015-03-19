@@ -305,8 +305,11 @@ class RequestEQNoitce(Command):
         client.send_crypto_packet(SMPacket)
 
     def call_from_console(self):
-        argIn = self.args[10:].encode('utf-8')
-        shipArg = int(argIn)
+        try:
+            argIn = self.args[8:].encode('utf-8')
+            shipArg = int(argIn)
+        except Exception as e:
+            print("[EQ Notice] Please enter the ship number to check. " % e)
         if 1 <= shipArg <= 10:
             if data_eq[shipArg] and not check_if_EQ_old(shipArg):
                 print("[EQ_Notice] Incoming EQ Report from PSO2es: %s" % (msg_eq[shipArg]))
