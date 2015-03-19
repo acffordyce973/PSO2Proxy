@@ -313,7 +313,7 @@ class RequestEQNoitce(Command):
             return
         if 1 <= shipArg <= 10:
             if data_eq[shipArg] and not check_if_EQ_old(shipArg):
-                print("[EQ_Notice] Incoming EQ Report from PSO2es: %s" % (msg_eq[shipArg]))
+                print("[EQ_Notice] Incoming EQ Report from PSO2es: %s" % (msg_eq[shipArg + 1]))
             else:
                 print("[EQ_Notice] No new EQ Report from PSO2es")
         else:
