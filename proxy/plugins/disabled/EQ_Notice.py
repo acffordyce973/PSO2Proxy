@@ -311,11 +311,10 @@ class RequestEQNoitce(Command):
         except Exception as e:
             return("[EQ Notice] Please enter the ship number to check.")
         if 1 <= shipArg <= 10:
-            shipArg = shipArg - 1
-            if data_eq[shipArg] and not check_if_EQ_old(shipArg):
-                return("[EQ_Notice] Incoming EQ Report from PSO2es: %s" % (msg_eq[shipArg]))
+            if data_eq[shipArg - 1] and not check_if_EQ_old(shipArg - 1):
+                return("[EQ_Notice] Incoming EQ Report from PSO2es: %s" % (msg_eq[shipArg - 1]))
             else:
-                return("[EQ_Notice] No new EQ Report from PSO2es for Ship " % (shipArg + 1))
+                return("[EQ_Notice] No new EQ Report from PSO2es.")
         else:
             return("[EQ_Notice] Please enter a valid ship number.")
 
